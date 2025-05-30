@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<head>
+    <title>Happy Bday 🎂</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: all 0.5s;
+        }
+        body {
+            background: linear-gradient(90deg, #ea21e0, #000000, #000000, #8c66ff);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            font-family: 'Baloo 2', cursive;
+            z-index: 0;
+            overflow: hidden;
+        }
+        button.start_btn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            font-size: 40px;
+            padding: 10px;
+            border-radius: 10px;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(to right, #8c66ff, #ea21e0);
+            border: 5px solid white;
+            box-shadow: 0 0 10px 5px white;
+            transition: box-shadow 0.5s, border 0.5s, all 0.5s;
+            font-family: 'Luckiest Guy', cursive;
+            z-index: 3;
+        }
+        button.start_btn:hover {
+            border: 6px solid #8c66ff;
+            box-shadow: 0 0 30px 9px #ea21e0;
+            padding: 12px;
+        }
+        button.start_btn:active {
+            border: 5px solid black;
+            box-shadow: 0 0 0 0;
+            padding: 8px;
+            transition: all 0.1s;
+        }
+        img.cake {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            z-index: 2;
+            opacity: 0;
+        }
+        button:disabled {
+            opacity: 1;
+            color: black;
+        }
+        img.decorate {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 100vw;
+            height: auto;
+            transform: translate(-50%, 100vh);
+            transition: transform 60s linear;
+            z-index: 1;
+        }
+        img.adi {
+            width: 200px;
+            height: auto;
+            border: 4px solid #8c66ff;
+            border-radius: 30px;
+            position: fixed;
+            z-index: 0;
+            transition: left 50s linear, right 50s linear;
+        }
+        img.a1 {
+            top: 10px;
+            left: -100%;
+            border: 4px solid #ea21e0;
+        }
+        img.a2 {
+            bottom: 30px;
+            left: -100%;
+        }
+        img.a3 {
+            top: 70%;
+            left: -100%;
+            border: 4px solid #ea21e0;
+        }
+        img.a4 {
+            top: 10px;
+            right: -100%;
+        }
+        img.a5 {
+            bottom: 150px;
+            right: -100%;
+            border: 4px solid #ea21e0;
+        }
+        img.a6 {
+            top: 40%;
+            right: -100%;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <button class="start_btn" id="main" onclick="start()">CLICK HERE!</button>
+    <img src="img/cake.png" class="cake" id="cakee">
+    <img src="img/decoration.png" class="decorate" id="decoration">
+    <img src="img/1.jpg"class="adi a1" id="b1">
+    <img src="img/2.jpg"class="adi a2" id="b2">
+    <img src="img/3.jpg"class="adi a3" id="b3">
+    <img src="img/4.jpg"class="adi a4" id="b4">
+    <img src="img/5.jpg"class="adi a5" id="b5">
+    <img src="img/6.jpg"class="adi a6" id="b6">
+    <audio id="birthdayAudio" src="song/bday.mp3" controls preload="auto" style="display:none;"></audio>
+
+
+    <script>
+        
+        function start() {
+            waitForAudioAndStart();
+        }
+        function waitForAudioAndStart() {
+            const audio = document.getElementById('birthdayAudio');
+            const button = document.getElementById('main');
+            const body = document.getElementById('body');
+            
+            button.textContent = "Loading...";
+            button.disabled = true;
+
+            const checkInterval = setInterval(() => {
+                if (audio.readyState >= 4) {
+                    clearInterval(checkInterval);
+
+                    button.textContent = "Increase your volume!"
+                    button.style.transition = "box-shadow 1.5s"
+                    button.style.boxShadow = "0 0 1500px 1000px black";
+
+                    setTimeout(() => {
+                        audio.volume = 1;
+                        audio.play();
+                    }, 5000);
+
+                    setTimeout(() => {
+                        button.textContent = "Happy Birthday to you ji!"
+                    }, 8500);
+
+                    setTimeout(() => {
+                        audio.volume = 1;
+                        body.style.background = "none";
+                        body.style.backgroundColor = "black";
+                    }, 10000);
+                    
+                    setTimeout(() => {
+                        button.style.transition = "opacity 0.5s"
+                        button.style.opacity = 0;
+                    }, 11000);
+
+                    setTimeout(() => {
+                        animationStart();
+                    }, 12000);
+                }
+            }, 200);
+        }
+        function animationStart() {
+            const cake = document.getElementById('cakee');
+            const decoration = document.getElementById('decoration');
+            const button = document.getElementById('main');
+            const c1 = document.getElementById('b1');
+            const c2 = document.getElementById('b2');
+            const c3 = document.getElementById('b3');
+            const c4 = document.getElementById('b4');
+            const c5 = document.getElementById('b5');
+            const c6 = document.getElementById('b6');
+            cake.style.display = "block";
+            cake.style.transform = "translate(-50%, 0)";
+            cake.style.opacity = 1;
+            cake.style.transition = "all 1s";
+
+            setTimeout(() => {
+                decoration.style.transform = "translate(-50%, -100%)";
+            }, 1000);
+            setTimeout(() => {
+                c1.style.left = "calc(100vw + 100%)"
+                c1.style.transform = "rotate(15deg)"
+            }, 2000);
+            setTimeout(() => {
+                c4.style.right = "calc(100vw + 100%)"
+            }, 4000);
+            setTimeout(() => {
+                c2.style.left = "calc(100vw + 100%)"
+                c2.style.transform = "rotate(-15deg)"
+            }, 6000);
+            setTimeout(() => {
+                c5.style.right = "calc(100vw + 100%)"
+            }, 8000);
+            setTimeout(() => {
+                c3.style.left = "calc(100vw + 100%)"
+                c3.style.transform = "rotate(25deg)"
+            }, 10000);
+            setTimeout(() => {
+                c6.style.right = "calc(100vw + 100%)"
+                c6.style.transform = "rotate(-10deg)"
+            }, 12000);
+            setTimeout(() => {
+                button.textContent = "The END!";
+                end();
+            }, 60000);
+        }
+        function end() {
+            const button = document.getElementById('main');
+            button.style.display = "block";
+            button.style.boxShadow = "0 0 0 0";
+            setTimeout(() => {
+                button.style.opacity = 1;
+                button.disabled = false;
+                button.onclick = count;
+            }, 1000);
+        }
+        function count() {
+            const button = document.getElementById('main');
+
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            const maxLeft = viewportWidth - buttonWidth;
+            const maxTop = viewportHeight - buttonHeight;
+
+            const randomLeft = Math.random() * maxLeft;
+            const randomTop = Math.random() * maxTop;
+
+            button.style.position = "fixed";
+            button.style.left = `${randomLeft}px`;
+            button.style.top = `${randomTop}px`;
+
+            const texts = [
+                "khatam",
+                "ended",
+                "bas kar bhai",
+                "kya hua",
+                "thaka nahi kya",
+                "bahut hua",
+                "Happy birthday?",
+                "Band kar de bhai!",
+                "Bas!!!!!"
+            ];
+
+            const randomIndex = Math.floor(Math.random() * texts.length);
+            button.textContent = texts[randomIndex];
+        }
+
+    </script>
+</body>
